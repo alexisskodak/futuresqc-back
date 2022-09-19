@@ -1,0 +1,8 @@
+.env
+.env.prod
+.env.stagging
+media
+static/*
+.dockerenv
+*.pyc
+
