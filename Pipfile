@@ -1,0 +1,37 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+mssql-django = "*"
+pylint-django = "*"
+django-extensions = "*"
+django-filter = "*"
+django-environ = "*"
+django-cors-headers = "*"
+drf-yasg = "*"
+djangorestframework-simplejwt = "*"
+
+[dev-packages]
+black = "==22.3.0"
+isort = "*"
+flake8 = "*"
+pylint = "*"
+pylint-django = "*"
+requests-mock = "*"
+ptvsd = "*"
+mock = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-xdist = "*"
+pytest-cov = "*"
+pyparsing = "*"
+pydot = "*"
+pygraphviz = "*"
+autopep8 = "*"
+
+[requires]
+python_version = "3.10"

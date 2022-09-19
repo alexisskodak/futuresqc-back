@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+  sql-server:
+    build:
+      context: ./mssql
+      dockerfile: Dockerfile
+    ports:
+      - "1433:1433"
+    env_file:
+      - sqlserver.env
+      - sapassword.env
+    volumes:
+      - sqlsystem:/var/opt/mssql/
+      - sqldata:/var/opt/sqlserver/data
+      - sqllog:/var/opt/sqlserver/log
+      - sqlbackup:/var/opt/sqlserver/backup
+
+  django:
+    build:
+      context: .
+    command: python /code/manage.py runserver 0.0.0.0:80
+    volumes:
+      - .:/code
+    ports:
+      - "8001:80"
+    links:
+      - sql-server
+    depends_on:
+      - sql-server
+    env_file:
+      - .env
+
+volumes:
+  sqlsystem:
+  sqldata:
+  sqllog:
+  sqlbackup:
