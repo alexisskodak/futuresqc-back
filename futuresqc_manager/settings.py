@@ -30,7 +30,6 @@ BASE_DIR = root()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str("SECRET_KEY")
 
-
 DEBUG = env.bool("DEBUG", default=False)
 
 ENVIRONMENT = env.str("ENVIRONMENT", default="production")
