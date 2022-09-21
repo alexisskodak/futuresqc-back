@@ -28,7 +28,7 @@ BASE_DIR = root()
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9y5hjvlpt!_@d=u(85%_lqphkptrmg9q#$a3#+kn)q^^)ronoj"
+SECRET_KEY = env.str("SECRET_KEY")
 
 
 DEBUG = env.bool("DEBUG", default=False)
@@ -78,15 +78,6 @@ CORS_ALLOW_HEADERS = default_headers + ("cache-control",)
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ],
-}
-
-SIMPLE_JWT = {
-    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=15),
-    "ROTATE_REFRESH_TOKENS": True,
-    "USER_ID_FIELD": "usuarioid",
 }
 
 SITE_ID = 1
