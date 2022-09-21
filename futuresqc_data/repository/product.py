@@ -1,7 +1,7 @@
-from .base import BaseDataTableRepository
+from .base import DataTableRepository
 
 
-class ProductTableRepository(BaseDataTableRepository):
+class ProductTableRepository(DataTableRepository):
     def get_table_last_record(self, query_values):
         procedure_name = "getUltimoRegistroTabla"
         query_params_as_string = (
