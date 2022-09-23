@@ -1,11 +1,12 @@
 import environ
 import pyodbc
 
-from typing import Callable
 env = environ.Env()
 
 
 class DataTableRepository:
+    _procedure_strategies = {"getUltimoRegistroTabla": "FETCH"}
+
     def __init__(self):
         connection_str = (
             "DRIVER={driver};SERVER={host};DATABASE={name};UID={user};PWD={password}".format(
@@ -16,7 +17,7 @@ class DataTableRepository:
                 password=env.str("DATA_DATABASE_PASSWORD"),
             )
         )
-        self.connection = pyodbc.connect(connection_str)
+        self.connection = pyodbc.connect(connection_str, autocommit=True)
         self.cursor = self.connection.cursor()
 
     def _close_connection(self):
@@ -24,9 +25,10 @@ class DataTableRepository:
         del self.cursor
         self.connection.close()
 
-    def _run_fetch_all_procedure(self, procedure: str, param_str: str, values: tuple, handle_results: Callable):
+    def run_procedure(self, procedure: str, param_str: str, values: tuple):
         try:
-            self.cursor.execute(f"Exec [dbo].[{procedure}] {param_str}", values)
+            for row in self.cursor.execute(f"Exec [dbo].[{procedure}] {param_str}", values):
+                yield row
 
         except Exception as exception:
             print(f"Error: {exception}")

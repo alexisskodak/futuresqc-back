@@ -1,3 +1,4 @@
+from .base import DataTableRepository
 from .product import ProductTableRepository
 
-__all__ = ["ProductTableRepository"]
+__all__ = ["DataTableRepository","ProductTableRepository"]
