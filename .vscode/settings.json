@@ -3,7 +3,17 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
         "--disable=C0111", // missing docstring
+        "--disable=C0114", // missing docstring
+        "--disable=C0115", // missing docstring
+        "--disable=C0116", // missing docstring
+        "--disable=C0209",
         "--load-plugins=pylint_django",
         "--django-settings-module=futuresqc_manager.settings",
     ],
+    "python.formatting.provider": "black",
+    "python.envFile": ".env",
+    "[python]": {
+      "editor.tabSize": 4,
+      "editor.formatOnSave": true,
+    },
 }

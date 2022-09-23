@@ -12,6 +12,8 @@ django-filter = "*"
 django-environ = "*"
 django-cors-headers = "*"
 drf-yasg = "*"
+ipython = "*"
+pyodbc = "*"
 
 [dev-packages]
 black = "==22.3.0"
@@ -33,3 +35,6 @@ autopep8 = "*"
 
 [requires]
 python_version = "3.10"
+
+[pipenv]
+allow_prereleases = true
