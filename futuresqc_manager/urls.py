@@ -20,10 +20,10 @@ from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
 from core.urls import urlpatterns as authurls
+from futuresqc_data.urls import urlpatterns as data_table_urls
 from product.urls import urlpatterns as producturls
 from scenario.urls import urlpatterns as scenariourls
 from user.urls import urlpatterns as userurls
-from futuresqc_data.urls import urlpatterns as data_table_urls
 
 schema_view = get_schema_view(
     openapi.Info(

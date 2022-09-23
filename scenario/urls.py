@@ -10,4 +10,8 @@ router.register(r"scenarios", ScenarioViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path(r"<str:usuarioid>/scenarios/", ScenarioViewSet.as_view({"get": "list"})),
+    path(
+        r"<str:usuarioid>/scenarios/<str:scenarioname>",
+        ScenarioViewSet.as_view({"get": "get_formats_from_scenario"}),
+    ),
 ]
